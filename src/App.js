@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Person from './Person/Person'
 
+
 class App extends Component {
     //state only available in components which are used by extending Component in reacr
     state = {
