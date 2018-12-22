@@ -5,7 +5,7 @@ import Person from './Person/Person'
 
 
 class App extends Component {
-    //state only available in components which are used by extending Component in reacr
+    //state only available in components which are used by extending Component in react
     state = {
         persons: [
             {name: 'Joey', age: 23},
