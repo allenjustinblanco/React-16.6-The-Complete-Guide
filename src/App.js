@@ -7,9 +7,9 @@ class App extends Component {
     //state only available in components which are used by extending Component in react
     state = {
         persons: [
-            {name: 'Joey', age: 23},
-            {name: 'Max', age: 26},
-            {name: 'Jennifer', age: 24}
+            { id: '1',name: 'Joey', age: 23},
+            { id: '2',name: 'Max', age: 26},
+            { id: '3',name: 'Jennifer', age: 24}
         ],
         showPersons: false
     };
@@ -25,6 +25,25 @@ class App extends Component {
             ]
         })
     };
+
+    nameChangedHandler = (event, id) => {
+      const personIndex = this.state.persons.findIndex(p => {
+        return p.id === id;
+      });
+
+      const person = {
+        ...this.state.persons[personIndex]
+      }
+
+      person.name = event.target.value;
+
+      const persons = [...this.state.persons];
+      persons[personIndex] = person;
+
+      this.setState( {persons: persons} )
+    }
+
+
 
     togglePersonsHandler = () => {
       const doesShow = this.state.showPersons;
@@ -56,6 +75,8 @@ class App extends Component {
                             click={() => this.deletePersonHandler(index)}
                             name={person.name}
                             age={person.age}
+                            key={person.id}
+                            changed={(event) => this.nameChangedHandler(event, person.id)}
                         />
                     })}
                 </div>
